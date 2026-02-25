@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>王润周 | 学术主页</title>
+  <meta name="description" content="王润周，西安邮电大学经济与管理学院讲师。管理智能决策、舆情挖掘与信息安全治理、人工智能与模式识别、城市大数据分析。" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg: #0b0d10;
+      --panel: #11151a;
+      --text: #e9eef5;
+      --muted: #aab4c0;
+      --line: rgba(255,255,255,.08);
+      --link: #7cc4ff;
+      --chip: rgba(124,196,255,.12);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1100px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "PingFang SC","Hiragino Sans GB","Microsoft YaHei", sans-serif;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb; --panel:#ffffff; --text:#121826; --muted:#4b5565;
+        --line: rgba(18,24,38,.10); --link:#0b63b6; --chip: rgba(11,99,182,.10);
+        --shadow: 0 12px 30px rgba(18,24,38,.08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:var(--font); color:var(--text); background:var(--bg);
+      line-height:1.55;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{
+      max-width:var(--maxw); margin:0 auto; padding:28px 18px 80px;
+      display:grid; grid-template-columns: 330px 1fr; gap:18px;
+    }
+    @media (max-width: 980px){ .wrap{grid-template-columns:1fr; } }
+    .card{
+      background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .left{
+      position: sticky; top:18px; height: fit-content; padding:18px;
+    }
+    @media (max-width: 980px){ .left{position:relative; top:auto} }
+    .avatar{
+      width:96px; height:96px; border-radius:20px; object-fit:cover;
+      border:1px solid var(--line); background:linear-gradient(135deg, rgba(124,196,255,.25), rgba(255,255,255,.05));
+    }
+    .name{font-size:22px; margin:12px 0 2px; letter-spacing:.2px}
+    .title{color:var(--muted); font-size:14px; margin:0 0 10px}
+    .meta{color:var(--muted); font-size:13px; margin:0}
+    .row{display:flex; gap:10px; align-items:center}
+    .btns{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius:999px;
+      background:var(--chip); border:1px solid var(--line);
+      font-size:13px; color:var(--text);
+    }
+    .btn svg{width:16px; height:16px; opacity:.9}
+    .nav{
+      margin-top:14px; padding-top:14px; border-top:1px solid var(--line);
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .nav a{
+      padding:9px 10px; border-radius:12px; color:var(--muted);
+      border:1px solid transparent;
+    }
+    .nav a.active{
+      color:var(--text);
+      background:rgba(124,196,255,.10);
+      border-color:var(--line);
+    }
+    .right{padding:18px 18px 22px}
+    .hero{
+      padding:16px 18px; border-bottom:1px solid var(--line);
+      display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:flex-end;
+    }
+    .hero h1{font-size:20px; margin:0}
+    .hero p{margin:6px 0 0; color:var(--muted); max-width:62ch}
+    .pill{
+      font-size:12px; color:var(--muted); border:1px solid var(--line);
+      padding:6px 10px; border-radius:999px;
+    }
+    section{padding:18px 18px 8px}
+    section + section{border-top:1px solid var(--line)}
+    h2{
+      font-size:16px; margin:0 0 10px;
+      display:flex; align-items:center; gap:10px;
+    }
+    h2 span{color:var(--muted); font-size:12px; font-weight:500}
+    ul{margin:8px 0 0; padding-left:18px}
+    li{margin:8px 0}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .chip{
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      border:1px solid var(--line); background:rgba(255,255,255,.04);
+      color:var(--muted);
+    }
+    .pub{
+      padding:12px 12px; border:1px solid var(--line);
+      border-radius:14px; background:rgba(255,255,255,.03); margin-top:10px;
+    }
+    .pub .t{margin:0 0 6px; font-weight:650}
+    .pub .m{margin:0; color:var(--muted); font-size:13px}
+    .pub .l{margin-top:8px; display:flex; flex-wrap:wrap; gap:10px; font-size:13px}
+    .foot{
+      padding:14px 18px 18px; border-top:1px solid var(--line);
+      color:var(--muted); font-size:12px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .topbtn{
+      position: fixed; right:16px; bottom:16px; z-index:9;
+      border-radius:999px; padding:10px 12px; border:1px solid var(--line);
+      background:var(--panel); color:var(--text); box-shadow:var(--shadow);
+      cursor:pointer; display:none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- Left profile -->
+    <aside class="card left" aria-label="profile">
+      <div class="row">
+        <img class="avatar" src="assets/avatar.jpg" alt="avatar" onerror="this.style.display='none'">
+        <div>
+          <div class="name">王润周</div>
+          <div class="title">博士｜讲师｜西安邮电大学 经济与管理学院</div>
+          <p class="meta">研究方向：管理智能决策｜舆情挖掘与信息安全治理｜AI与模式识别｜城市大数据分析</p>
+        </div>
+      </div>
+
+      <div class="btns" aria-label="links">
+        <a class="btn" href="mailto:your_email@xupt.edu.cn" title="Email">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+          Email
+        </a>
+        <a class="btn" href="#" target="_blank" rel="noreferrer" title="Google Scholar">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3Z" stroke="currentColor" stroke-width="1.6"/></svg>
+          Scholar
+        </a>
+        <a class="btn" href="#" target="_blank" rel="noreferrer" title="ORCID">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h3v10H7V7Z" stroke="currentColor" stroke-width="1.6"/><path d="M14 7h3a3 3 0 0 1 0 10h-3V7Z" stroke="currentColor" stroke-width="1.6"/></svg>
+          ORCID
+        </a>
+        <a class="btn" href="#" target="_blank" rel="noreferrer" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 19c-4 1.5-4-2-5-2m10 4v-3.5c0-1 .1-1.5-.5-2 2 0 4-.5 4-4 0-1-.3-2-1-2.5.1-.5.5-1.7-.1-2.5 0 0-1 0-2.4 1a8 8 0 0 0-4 0c-1.4-1-2.4-1-2.4-1-.6.8-.2 2-.1 2.5-.7.5-1 1.5-1 2.5 0 3.5 2 4 4 4-.3.3-.5.8-.5 1.5V21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          GitHub
+        </a>
+      </div>
+
+      <nav class="nav" aria-label="section-nav">
+        <a href="#about">简介</a>
+        <a href="#interests">研究方向</a>
+        <a href="#publications">论文成果</a>
+        <a href="#projects">项目</a>
+        <a href="#service">学术服务</a>
+        <a href="#honors">荣誉</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </aside>
+
+    <!-- Right content -->
+    <main class="card">
+      <div class="hero">
+        <div>
+          <h1>Academic Homepage</h1>
+          <p>
+            主要使用机器学习、深度学习、大语言模型、复杂网络与城市计算方法，
+            面向社会治理场景开展情感识别、文本挖掘、信息风险预警与时序预测等研究。
+          </p>
+        </div>
+        <div class="pill">Last update: <span id="lastUpdate"></span></div>
+      </div>
+
+      <section id="about">
+        <h2>简介 <span>About</span></h2>
+        <p style="margin:0;color:var(--muted)">
+          王润周，博士，西安邮电大学经济与管理学院讲师。研究方向为管理智能决策、舆情挖掘与信息安全治理、人工智能与模式识别、城市大数据分析。
+          在 Nature Communications、Applied Mathematics and Computation、Applied Soft Computing、Journal of Cheminformatics 等期刊发表论文 17 篇，
+          参与国家自然科学基金面上、教育部人文社科、陕西省自然科学基金/社科基金等纵向项目共 6 项。
+        </p>
+        <div class="chips" aria-label="keywords">
+          <span class="chip">AI Safety / AIGC Security</span>
+          <span class="chip">Public Opinion Mining</span>
+          <span class="chip">Risk Early Warning</span>
+          <span class="chip">Text & Multimodal Mining</span>
+          <span class="chip">Urban Big Data</span>
+        </div>
+      </section>
+
+      <section id="interests">
+        <h2>研究方向 <span>Research Interests</span></h2>
+        <ul>
+          <li><b>人工智能安全</b>：虚假信息/谣言检测对抗、人机协同认知对抗、可信 AI 与信息溯源增强。</li>
+          <li><b>社交网络安全</b>：舆论与虚假信息治理、情感分析、用户行为与画像、有害文本识别与心理危机预警、灾害事件舆情。</li>
+          <li><b>数字经济与金融安全</b>：金融文本挖掘、风险识别与预警。</li>
+          <li><b>城市大数据分析</b>：经济/城市/人口数据分析、时空建模与预测。</li>
+          <li><b>数字人文</b>：AI+非遗（多模态识别、知识组织与问答）。</li>
+        </ul>
+      </section>
+
+      <section id="publications">
+        <h2>论文成果 <span>Selected Publications</span></h2>
+
+        <div class="pub">
+          <p class="t">Linguistic features of AI mis/disinformation and the detection limits of LLMs. <i>Nature Communications</i>.</p>
+          <p class="m">（SCI 1区 Top｜JCR Q1｜IF 17.2）</p>
+          <div class="l">
+            <a href="#" target="_blank" rel="noreferrer">PDF</a>
+            <a href="#" target="_blank" rel="noreferrer">Code</a>
+            <a href="#" target="_blank" rel="noreferrer">BibTeX</a>
+          </div>
+        </div>
+
+        <div class="pub">
+          <p class="t">WANG R, ZHANG X, LIU Q, et al. Visual information identification and Q&A of intangible cultural heritage inheritors by using enhanced Graph-Retrieval framework. <i>npj Heritage Science</i>, 2026, 14: 113.</p>
+          <p class="m">DOI: 10.1038/s40494-026-02384-z ｜（SCI 1区 Top｜JCR Q1｜IF 4.9）</p>
+          <div class="l">
+            <a href="https://doi.org/10.1038/s40494-026-02384-z" target="_blank" rel="noreferrer">DOI</a>
+          </div>
+        </div>
+
+        <div class="pub">
+          <p class="t">Wang R, Zhang X, Wang M. A two-layer model with partial mapping: Unveiling the interplay between information dissemination and disease diffusion. <i>Applied Mathematics and Computation</i>, 2024, 468: 128507.</p>
+          <p class="m">（SCI 1区 Top｜JCR Q1）</p>
+        </div>
+
+        <div class="pub">
+          <p class="t">王润周, 张新生. 基于生命周期信息画像的重大灾难事件舆情预警研究. <i>运筹与管理</i>, 已录用（2026-02-07 网络首发标注）。</p>
+          <p class="m">（国自然管理学部 A 类期刊）</p>
+        </div>
+
+        <p style="margin:10px 0 0;color:var(--muted);font-size:13px">
+          提示：你可以把所有论文按“期刊论文 / 会议论文 / 中文核心”分组，我也可以按你的最终清单帮你自动排版成 APA/GB/T 引用格式。
+        </p>
+      </section>
+
+      <section id="projects">
+        <h2>项目 <span>Grants & Projects</span></h2>
+        <h3 style="margin:8px 0 6px;font-size:14px">主持项目</h3>
+        <ul>
+          <li>陕西省教育厅科学研究计划项目（25JK0233）：人工智能驱动下突发舆情事件中大学生情感演化与心理危机预警研究（2026.01–2027.12，在研）。</li>
+        </ul>
+
+        <h3 style="margin:12px 0 6px;font-size:14px">参与项目（部分）</h3>
+        <ul>
+          <li>国家社科基金后期资助项目（24FGLB102）：数字化时代网络信息治理研究（2025.01–2026.12，在研）。</li>
+          <li>教育部人文社科规划基金（24YJA630129）：AI 生成式虚假信息风险感知及治理路径研究（2024.12–2027.12，在研）。</li>
+          <li>陕西省自然科学基础研究计划（2025JC-YBMS-1100）：AIGC 背景下虚假信息演化、识别及治理研究（2025.01–2026.12，在研）。</li>
+          <li>西安市大数据资源管理局横向（20220513）：西安市 12345 社情民意舆情分析与管理决策研究（2023.01–2024.12，结题）。</li>
+        </ul>
+      </section>
+
+      <section id="service">
+        <h2>学术服务 <span>Academic Service</span></h2>
+        <ul>
+          <li>审稿人：Scientific Reports、Journal of Supercomputing、Computing、International Journal of Machine Learning and Cybernetics。</li>
+          <li>社会兼职：CCF 会员、人工智能学会会员。</li>
+        </ul>
+      </section>
+
+      <section id="honors">
+        <h2>荣誉 <span>Honors</span></h2>
+        <ul>
+          <li>2024 年博士研究生国家奖学金</li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>联系 <span>Contact</span></h2>
+        <ul>
+          <li>单位：西安邮电大学 经济与管理学院</li>
+          <li>Email：<a href="mailto:your_email@xupt.edu.cn">your_email@xupt.edu.cn</a></li>
+          <li>地址：西安市（可选填写）</li>
+        </ul>
+      </section>
+
+      <div class="foot">
+        <span>© <span id="year"></span> 王润周 · All rights reserved.</span>
+        <span>Built with a lightweight single-file template.</span>
+      </div>
+    </main>
+  </div>
+
+  <button class="topbtn" id="topbtn" aria-label="Back to top">↑ Top</button>
+
+  <script>
+    // last update + year
+    const now = new Date();
+    document.getElementById("year").textContent = now.getFullYear();
+    document.getElementById("lastUpdate").textContent =
+      now.toISOString().slice(0,10);
+
+    // smooth scroll
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    // active nav highlight
+    const navLinks = Array.from(document.querySelectorAll(".nav a"));
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute("href")));
+
+    const setActive = () => {
+      let idx = 0;
+      for (let i = 0; i < sections.length; i++){
+        const r = sections[i].getBoundingClientRect();
+        if (r.top <= 140) idx = i;
+      }
+      navLinks.forEach((a,i)=>a.classList.toggle("active", i===idx));
+    };
+    window.addEventListener("scroll", setActive, {passive:true});
+    setActive();
+
+    // back-to-top
+    const topbtn = document.getElementById("topbtn");
+    window.addEventListener("scroll", () => {
+      topbtn.style.display = (window.scrollY > 600) ? "block" : "none";
+    }, {passive:true});
+    topbtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+  </script>
+</body>
+</html>
