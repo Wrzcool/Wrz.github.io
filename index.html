@@ -121,6 +121,54 @@
       background:var(--panel); color:var(--text); box-shadow:var(--shadow);
       cursor:pointer; display:none;
     }
+
+    /* Publications pagination */
+    .pubPagerBar{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      display:flex;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .pubPagerInfo{ color: var(--muted); font-size: 13px; }
+    .pubPagerBtns{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+
+    .pubBtn{
+      appearance:none;
+      border:1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .pubBtn:disabled{
+      opacity:.5;
+      cursor:not-allowed;
+    }
+    .pubPages{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+    .pubPage{
+      min-width: 34px;
+      text-align:center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      cursor:pointer;
+      font-size: 13px;
+    }
+    .pubPage.active{
+      background: rgba(124,196,255,.12);
+      color: var(--text);
+    }
   </style>
 </head>
 
@@ -184,7 +232,7 @@
         <h2>简介 <span>About</span></h2>
         <p style="margin:0;color:var(--muted)">
           王润周，博士，西安邮电大学经济与管理学院讲师。研究方向为管理智能决策、舆情挖掘与信息安全治理、人工智能与模式识别、城市大数据分析。
-          在 Nature Communications、npj heritage science、Applied Mathematics and Computation、Applied Soft Computing、Journal of Cheminformatics 等期刊发表论文 18 篇，
+          在 Nature Communications、npj Heritage Science、Applied Mathematics and Computation、Applied Soft Computing、Journal of Cheminformatics 等期刊发表论文 18 篇，
           参与国家自然科学基金面上、教育部人文社科、陕西省自然科学基金/社科基金等纵向项目共 6 项。
         </p>
         <div class="chips" aria-label="keywords">
@@ -208,156 +256,163 @@
       </section>
 
       <section id="publications">
-  <h2>论文成果 <span>Publications</span></h2>
+        <h2>论文成果 <span>Publications</span></h2>
 
-  <div class="pub">
-    <p class="t">Linguistic features of AI mis/disinformation and the detection limits of LLMs. <i>Nature Communications</i>.</p>
-    <p class="m">(SCI1区Top, JCR Q1，IF17.2, Nature 子刊)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+        <div class="pubPagerBar">
+          <div class="pubPagerInfo" id="pubPagerInfo">共 0 篇 · 第 1/1 页</div>
+          <div class="pubPagerBtns" aria-label="Publications pagination">
+            <button class="pubBtn" id="pubPrev" type="button">上一页</button>
+            <div class="pubPages" id="pubPages"></div>
+            <button class="pubBtn" id="pubNext" type="button">下一页</button>
+          </div>
+        </div>
 
-  <div class="pub">
-    <p class="t">WANG R, ZHANG X, LIU Q, et al. Visual information identification and Q&amp;A of intangible cultural heritage inheritors by using enhanced Graph-Retrieval framework[J]. <i>npj Heritage Science</i>, 2026, 14: 113.</p>
-    <p class="m">https://doi.org/10.1038/s40494-026-02384-z. (SCI1区Top, JCR Q1，IF4.9, Nature 合作期刊)</p>
-    <div class="l">
-      <a href="https://www.nature.com/articles/s40494-026-02384-z" 
-      target="_blank" 
-      rel="noreferrer">link</a>
-      View Paper
-    </div>
-  </div>
+        <div id="pubList">
+          <div class="pub">
+            <p class="t">Linguistic features of AI mis/disinformation and the detection limits of LLMs. <i>Nature Communications</i>.</p>
+            <p class="m">(SCI1区Top, JCR Q1，IF17.2, Nature 子刊)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">Wang R, ZhangX, Wang M. A two-layer model with partial mapping: Unveiling the interplay between information dissemination and disease diffusion[J]. <i>Applied Mathematics and Computation</i>, 2024, 468: 128507.</p>
-    <p class="m">(SCI 1区Top, JCR Q1，IF4.0)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">WANG R, ZHANG X, LIU Q, et al. Visual information identification and Q&amp;A of intangible cultural heritage inheritors by using enhanced Graph-Retrieval framework[J]. <i>npj Heritage Science</i>, 2026, 14: 113.</p>
+            <p class="m">https://doi.org/10.1038/s40494-026-02384-z. (SCI1区Top, JCR Q1，IF4.9, Nature 合作期刊)</p>
+            <div class="l">
+              <a href="https://www.nature.com/articles/s40494-026-02384-z" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">王润周, 张新生. 基于生命周期信息画像的重大灾难事件舆情预警研究[J/OL]. <i>运筹与管理</i>, 1-8[2026-02-07].</p>
-    <p class="m">https://link.cnki.net/urlid/34.1133.g3.20251125.1616.002.（国自然管理学部A类期刊，已录用）</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">Wang R, ZhangX, Wang M. A two-layer model with partial mapping: Unveiling the interplay between information dissemination and disease diffusion[J]. <i>Applied Mathematics and Computation</i>, 2024, 468: 128507.</p>
+            <p class="m">(SCI 1区Top, JCR Q1，IF4.0)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">Wang R, ZhangX, Ma Y. An advanced model integrating prompt tuning and dual-channel paradigm for enhancing public opinion sentiment classification[J]. <i>Computers and Electrical Engineering</i>, 2025, 123: 110047.</p>
-    <p class="m">(SCI 3区, JCR Q1，IF4.9)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">王润周, 张新生. 基于生命周期信息画像的重大灾难事件舆情预警研究[J/OL]. <i>运筹与管理</i>, 1-8[2026-02-07].</p>
+            <p class="m">https://link.cnki.net/urlid/34.1133.g3.20251125.1616.002.（国自然管理学部A类期刊，已录用）</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">Ma Y, Zhang X, Wang R. Semantic-based topic model for public opinion analysis in sudden-onset disasters[J]. <i>Applied Soft Computing</i>, 2025: 112700.</p>
-    <p class="m">(SCI 1区, JCRQ1)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">Wang R, ZhangX, Ma Y. An advanced model integrating prompt tuning and dual-channel paradigm for enhancing public opinion sentiment classification[J]. <i>Computers and Electrical Engineering</i>, 2025, 123: 110047.</p>
+            <p class="m">(SCI 3区, JCR Q1，IF4.9)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">Zhang T, Sun S, Wang R, et al. BioisoIdentifier: an online free tool to investigate local structural replacements from PDB[J]. <i>Journal of Cheminformatics</i>, 2024, 16(1): 7.</p>
-    <p class="m">(SCI2区, JCRQ1)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">Ma Y, Zhang X, Wang R. Semantic-based topic model for public opinion analysis in sudden-onset disasters[J]. <i>Applied Soft Computing</i>, 2025: 112700.</p>
+            <p class="m">(SCI 1区, JCRQ1)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">王润周, 张新生. 融合输出关联和聚类图谱的突发舆情衍生主题发现[J]. <i>情报理论与实践</i>, 2025, 48(08): 135-148.</p>
-    <p class="m">(CSSCI)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">Zhang T, Sun S, Wang R, et al. BioisoIdentifier: an online free tool to investigate local structural replacements from PDB[J]. <i>Journal of Cheminformatics</i>, 2024, 16(1): 7.</p>
+            <p class="m">(SCI2区, JCRQ1)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">王润周, 张新生, 王明虎, 等. 基于混合检索增强生成大语言模型的网络舆情多任务分析[J]. <i>情报杂志</i>, 2025, 44(05): 91-103.</p>
-    <p class="m">(CSSCI)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">王润周, 张新生. 融合输出关联和聚类图谱的突发舆情衍生主题发现[J]. <i>情报理论与实践</i>, 2025, 48(08): 135-148.</p>
+            <p class="m">(CSSCI)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">张新生, 王润周, 马玉龙. AIGC背景下虚假信息治理挑战、机会与策略研究[J]. <i>情报科学</i>, 2025, 43(05): 78-88+96.</p>
-    <p class="m">(CSSCI)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">王润周, 张新生, 王明虎, 等. 基于混合检索增强生成大语言模型的网络舆情多任务分析[J]. <i>情报杂志</i>, 2025, 44(05): 91-103.</p>
+            <p class="m">(CSSCI)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">王润周, 张新生, 王明虎. 融合动态掩码注意力与多教师多特征知识蒸馏的文本分类[J]. <i>中文信息学报</i>, 2024, 38(03): 113-129.</p>
-    <p class="m">(T1, CCF-A，CSCD)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">张新生, 王润周, 马玉龙. AIGC背景下虚假信息治理挑战、机会与策略研究[J]. <i>情报科学</i>, 2025, 43(05): 78-88+96.</p>
+            <p class="m">(CSSCI)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">王润周, 张新生. 基于混合动态掩码与多策略融合的医疗知识图谱问答[J]. <i>计算机科学与探索</i>, 2024, 18(10): 2770-2786.</p>
-    <p class="m">(T2, CCF-B，CSCD)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">王润周, 张新生, 王明虎. 融合动态掩码注意力与多教师多特征知识蒸馏的文本分类[J]. <i>中文信息学报</i>, 2024, 38(03): 113-129.</p>
+            <p class="m">(T1, CCF-A，CSCD)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">王润周, 张新生, 王明虎. 基于信号分解和深度学习的农产品价格预测[J]. <i>农业工程学报</i>, 2022, 38(24): 256-267.</p>
-    <p class="m">(T1, 卓越期刊, EI, CSCD)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">王润周, 张新生. 基于混合动态掩码与多策略融合的医疗知识图谱问答[J]. <i>计算机科学与探索</i>, 2024, 18(10): 2770-2786.</p>
+            <p class="m">(T2, CCF-B，CSCD)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">张新生, 林承宇, 马玉龙, 王润周. 融合响应特征差异的多模态AI虚假信息检测[J]. <i>情报杂志</i>, 2025, 44(07): 122-134.</p>
-    <p class="m">(CSSCI)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">王润周, 张新生, 王明虎. 基于信号分解和深度学习的农产品价格预测[J]. <i>农业工程学报</i>, 2022, 38(24): 256-267.</p>
+            <p class="m">(T1, 卓越期刊, EI, CSCD)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">张新生, 张颢泷, 马玉龙, 王润周. 基于RoBERTa-MTL融合语言特征的有害文本识别[J/OL]. <i>情报杂志</i>, 1-8[2025-08-26].</p>
-    <p class="m">https://link.cnki.net/urlid/61.1167.G3.20250427.1423.013. (CSSCI)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">张新生, 林承宇, 马玉龙, 王润周. 融合响应特征差异的多模态AI虚假信息检测[J]. <i>情报杂志</i>, 2025, 44(07): 122-134.</p>
+            <p class="m">(CSSCI)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">张新生, 聂达文, 陈章政, 王润周等. 西部地区建筑业碳排放时空演变特征及影响因素分析[J]. <i>环境科学</i>, 2025, 46(09): 5475-5489.</p>
-    <p class="m">(T1, EI, CSCD)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">张新生, 张颢泷, 马玉龙, 王润周. 基于RoBERTa-MTL融合语言特征的有害文本识别[J/OL]. <i>情报杂志</i>, 1-8[2025-08-26].</p>
+            <p class="m">https://link.cnki.net/urlid/61.1167.G3.20250427.1423.013. (CSSCI)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">张新生, 李忆楠, 陈章政, 王润周. 基于GBDT-XGBoost的西北地区制造业碳排放预测研究[J]. <i>环境科学与技术</i>, 2024, 47(12): 131-143.</p>
-    <p class="m">(T2, CSCD)</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">张新生, 聂达文, 陈章政, 王润周等. 西部地区建筑业碳排放时空演变特征及影响因素分析[J]. <i>环境科学</i>, 2025, 46(09): 5475-5489.</p>
+            <p class="m">(T1, EI, CSCD)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-  <div class="pub">
-    <p class="t">王颖, 王润周. 基于改进FMEA的图书馆内部人因设计预防模型-以天津理工大学图书馆为例[J]. <i>新世纪图书馆</i>, 2019,(08): 57-61.</p>
-    <p class="m">（CSSCI扩展版, JST）</p>
-    <div class="l">
-      <a href="#" target="_blank" rel="noreferrer">link</a>
-    </div>
-  </div>
+          <div class="pub">
+            <p class="t">张新生, 李忆楠, 陈章政, 王润周. 基于GBDT-XGBoost的西北地区制造业碳排放预测研究[J]. <i>环境科学与技术</i>, 2024, 47(12): 131-143.</p>
+            <p class="m">(T2, CSCD)</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
 
-</section>
+          <div class="pub">
+            <p class="t">王颖, 王润周. 基于改进FMEA的图书馆内部人因设计预防模型-以天津理工大学图书馆为例[J]. <i>新世纪图书馆</i>, 2019,(08): 57-61.</p>
+            <p class="m">（CSSCI扩展版, JST）</p>
+            <div class="l">
+              <a href="#" target="_blank" rel="noreferrer">link</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="projects">
         <h2>项目 <span>Grants & Projects</span></h2>
@@ -412,8 +467,7 @@
     // last update + year
     const now = new Date();
     document.getElementById("year").textContent = now.getFullYear();
-    document.getElementById("lastUpdate").textContent =
-      now.toISOString().slice(0,10);
+    document.getElementById("lastUpdate").textContent = now.toISOString().slice(0,10);
 
     // smooth scroll
     document.documentElement.style.scrollBehavior = "smooth";
@@ -439,11 +493,86 @@
       topbtn.style.display = (window.scrollY > 600) ? "block" : "none";
     }, {passive:true});
     topbtn.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+
+    // ===== Publications pagination (10 per page) =====
+    (() => {
+      const pubList = document.getElementById("pubList");
+      if (!pubList) return;
+
+      const items = Array.from(pubList.querySelectorAll(".pub"));
+      const pageSize = 10;
+
+      const infoEl = document.getElementById("pubPagerInfo");
+      const pagesEl = document.getElementById("pubPages");
+      const prevBtn = document.getElementById("pubPrev");
+      const nextBtn = document.getElementById("pubNext");
+
+      let page = 1;
+      const total = items.length;
+      const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
+      function renderPages() {
+        pagesEl.innerHTML = "";
+        const maxBtns = 7;
+
+        const makeBtn = (p, text = String(p), active = false) => {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "pubPage" + (active ? " active" : "");
+          b.textContent = text;
+          b.addEventListener("click", () => go(p));
+          return b;
+        };
+
+        if (totalPages <= maxBtns) {
+          for (let p = 1; p <= totalPages; p++) pagesEl.appendChild(makeBtn(p, String(p), p === page));
+          return;
+        }
+
+        const show = new Set([1, totalPages, page, page - 1, page + 1].filter(p => p >= 1 && p <= totalPages));
+        const sorted = Array.from(show).sort((a,b)=>a-b);
+
+        let last = 0;
+        for (const p of sorted) {
+          if (p - last > 1) {
+            const dots = document.createElement("span");
+            dots.textContent = "…";
+            dots.style.color = "var(--muted)";
+            dots.style.padding = "0 4px";
+            pagesEl.appendChild(dots);
+          }
+          pagesEl.appendChild(makeBtn(p, String(p), p === page));
+          last = p;
+        }
+      }
+
+      function render() {
+        const start = (page - 1) * pageSize;
+        const end = start + pageSize;
+
+        items.forEach((el, idx) => {
+          el.style.display = (idx >= start && idx < end) ? "" : "none";
+        });
+
+        if (infoEl) infoEl.textContent = `共 ${total} 篇 · 第 ${page}/${totalPages} 页`;
+        if (prevBtn) prevBtn.disabled = page <= 1;
+        if (nextBtn) nextBtn.disabled = page >= totalPages;
+
+        renderPages();
+      }
+
+      function go(p) {
+        page = Math.min(totalPages, Math.max(1, p));
+        render();
+        const anchor = document.getElementById("publications");
+        if (anchor) anchor.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      if (prevBtn) prevBtn.addEventListener("click", () => go(page - 1));
+      if (nextBtn) nextBtn.addEventListener("click", () => go(page + 1));
+
+      render();
+    })();
   </script>
 </body>
-
 </html>
-
-
-
-
